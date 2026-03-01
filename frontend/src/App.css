@@ -1,0 +1,13 @@
+/* 
+  App.css is now modularized. 
+  Styles have been moved to:
+  - Global.css
+  - components/Hero.css
+  - components/ProjectList.css
+  - components/SkillList.css
+  - components/ExperienceList.css
+  - components/CertificateList.css
+  - components/EducationList.css
+  - components/AdminDashboard.css
+  - components/Modal.css
+*/
