@@ -125,6 +125,11 @@ CORS_ALLOWED_ORIGINS += [
     if origin.strip()
 ]
 
+# Allow all Vercel preview URLs (covers stable + preview deployments)
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
+
 # ─── MongoDB ──────────────────────────────────────────────────────────────────
 
 SILENCED_SYSTEM_CHECKS = ['mongodb.E001']
