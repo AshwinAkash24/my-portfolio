@@ -66,42 +66,23 @@ export default function ExperienceList() {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <button className="modal-close" onClick={closeModal}>&times;</button>
                         <h2>{selectedExperience.role} at {selectedExperience.company}</h2>
-                        {selectedExperience.company_url && (
-                            <a
-                                href={selectedExperience.company_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="company-link"
-                                style={{
-                                    display: 'inline-block',
-                                    marginBottom: '1rem',
-                                    color: 'var(--primary)',
-                                    textDecoration: 'none',
-                                    fontSize: '0.9rem',
-                                    fontWeight: '500'
-                                }}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem', verticalAlign: 'middle' }}><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                Visit Company Website
-                            </a>
-                        )}
 
                         <div className="project-details-list modal-details">
                             {selectedExperience.problem_statement && (
                                 <div className="detail-item">
-                                    <strong>Problem Statement:</strong>
+                                    <strong>My Approach:</strong>
                                     {selectedExperience.problem_statement}
                                 </div>
                             )}
                             {selectedExperience.task_details && (
                                 <div className="detail-item">
-                                    <strong>Task Details:</strong>
+                                    <strong>The Task:</strong>
                                     {selectedExperience.task_details}
                                 </div>
                             )}
                             {selectedExperience.my_solution && (
                                 <div className="detail-item">
-                                    <strong>My Solution:</strong>
+                                    <strong>Solution:</strong>
                                     {selectedExperience.my_solution}
                                 </div>
                             )}

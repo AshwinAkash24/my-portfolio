@@ -57,17 +57,17 @@ export default function ProjectList() {
                         <div className="project-details-list modal-details">
                             {selectedProject.problem_statement && (
                                 <div className="detail-item">
-                                    <strong>Problem:</strong> {selectedProject.problem_statement}
+                                    <strong>My Approach:</strong> {selectedProject.problem_statement}
                                 </div>
                             )}
                             {selectedProject.task_details && (
                                 <div className="detail-item">
-                                    <strong>Task:</strong> {selectedProject.task_details}
+                                    <strong>The Task:</strong> {selectedProject.task_details}
                                 </div>
                             )}
                             {selectedProject.my_solution && (
                                 <div className="detail-item">
-                                    <strong>My Solution:</strong> {selectedProject.my_solution}
+                                    <strong>Solution:</strong> {selectedProject.my_solution}
                                 </div>
                             )}
                         </div>
