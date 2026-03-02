@@ -116,8 +116,8 @@ DEFAULT_AUTO_FIELD = 'django_mongodb_backend.fields.ObjectIdAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    # Add your Vercel URL below after deploying, e.g.:
-    # "https://your-portfolio.vercel.app",
+    "https://my-portfolio-deploy-drab.vercel.app",
+    "https://my-portfolio-deploy-p1ukvg3ci-ashwinakash242005-9429s-projects.vercel.app",
 ]
 
 CORS_ALLOWED_ORIGINS += [
