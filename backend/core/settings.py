@@ -67,23 +67,34 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# ─── Database (MongoDB Atlas) ─────────────────────────────────────────────────
+# ─── Database ─────────────────────────────────────────────────────────────────
 
-MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'ashwin@2005#')
+USE_SQLITE = os.environ.get('USE_SQLITE', 'True' if DEBUG else 'False') == 'True'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django_mongodb_backend',
-        'NAME': 'portfolio_db',
-        'HOST': 'mongodb+srv://admin123:' + quote_plus(MONGO_PASSWORD) + '@cluster0.0q7eyfg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-        'OPTIONS': {
-            'connectTimeoutMS': 60000,
-            'socketTimeoutMS': 60000,
-            'serverSelectionTimeoutMS': 60000,
-            'tls': True,
+if USE_SQLITE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-}
+    DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+else:
+    MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', 'ashwin@2005#')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django_mongodb_backend',
+            'NAME': 'portfolio_db',
+            'HOST': 'mongodb+srv://admin123:' + quote_plus(MONGO_PASSWORD) + '@cluster0.0q7eyfg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+            'OPTIONS': {
+                'connectTimeoutMS': 60000,
+                'socketTimeoutMS': 60000,
+                'serverSelectionTimeoutMS': 60000,
+                'tls': True,
+            }
+        }
+    }
+    DEFAULT_AUTO_FIELD = 'django_mongodb_backend.fields.ObjectIdAutoField'
 
 # ─── Password Validation ──────────────────────────────────────────────────────
 
@@ -109,7 +120,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ─── Default Auto Field ───────────────────────────────────────────────────────
 
-DEFAULT_AUTO_FIELD = 'django_mongodb_backend.fields.ObjectIdAutoField'
+# Managed within DATABASES block above
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 
@@ -118,6 +129,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://my-portfolio-deploy-drab.vercel.app",
     "https://my-portfolio-deploy-p1ukvg3ci-ashwinakash242005-9429s-projects.vercel.app",
+    # Main production URLs
+    "https://my-portfolio-n28w.onrender.com",
 ]
 
 CORS_ALLOWED_ORIGINS += [
@@ -129,7 +142,6 @@ CORS_ALLOWED_ORIGINS += [
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.vercel\.app$",
 ]
-
 # ─── MongoDB ──────────────────────────────────────────────────────────────────
 
 SILENCED_SYSTEM_CHECKS = ['mongodb.E001']

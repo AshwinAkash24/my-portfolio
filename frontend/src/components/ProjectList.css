@@ -101,3 +101,9 @@
         gap: 0.75rem;
     }
 }
+
+@media (max-width: 480px) {
+    .project-image {
+        height: 180px;
+    }
+}
