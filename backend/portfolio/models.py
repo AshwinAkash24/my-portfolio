@@ -1,6 +1,8 @@
 from django.db import models
+from django_mongodb_backend.fields import ObjectIdAutoField
 
 class Project(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
     problem_statement = models.TextField(blank=True, null=True)
@@ -15,6 +17,7 @@ class Project(models.Model):
         return self.title
 
 class Skill(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
     name = models.CharField(max_length=100)
     category = models.CharField(max_length=100, default='General')
 
@@ -22,6 +25,7 @@ class Skill(models.Model):
         return self.name
 
 class Experience(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
     role = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
     company_url = models.URLField(blank=True, null=True)
@@ -35,6 +39,7 @@ class Experience(models.Model):
         return f"{self.role} at {self.company}"
 
 class Certificate(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
     title = models.CharField(max_length=200)
     issuing_organization = models.CharField(max_length=200)
     issue_date = models.DateField()
@@ -45,6 +50,7 @@ class Certificate(models.Model):
         return f"{self.title} - {self.issuing_organization}"
 
 class Education(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
     institution = models.CharField(max_length=200)
     degree = models.CharField(max_length=200)
     field_of_study = models.CharField(max_length=200)
